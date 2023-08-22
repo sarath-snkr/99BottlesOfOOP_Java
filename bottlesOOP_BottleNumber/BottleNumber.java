@@ -1,4 +1,4 @@
-package bottlesOOP_BottleNumber;
+
 
 public class BottleNumber {
 	private int number;

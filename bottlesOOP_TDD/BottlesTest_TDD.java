@@ -1,10 +1,8 @@
-package bottlesOOP_TDD;
+
 
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
-
-import bottlesOOP.Bottles;
 
 public class BottlesTest_TDD {
 	@Test

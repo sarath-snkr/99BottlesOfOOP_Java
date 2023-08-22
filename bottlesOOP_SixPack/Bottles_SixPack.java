@@ -1,4 +1,4 @@
-package bottlesOOP_SixPack;
+
 // based on 1.1.4, Shameless Green
 // new requirement: say "1 six-pack" in place of "6 bottles"
 

@@ -1,4 +1,4 @@
-package bottlesOOP_TDD;
+
 /*
  * API:
  * verse(n) // returns verse for given n of bottles

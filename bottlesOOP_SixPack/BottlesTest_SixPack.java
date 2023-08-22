@@ -1,4 +1,4 @@
-package bottlesOOP_SixPack;
+
 
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;

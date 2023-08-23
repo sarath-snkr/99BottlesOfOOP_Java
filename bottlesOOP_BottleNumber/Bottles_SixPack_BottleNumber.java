@@ -20,10 +20,12 @@ public class Bottles_SixPack_BottleNumber {
     }
 
     public String verse(int number) {
-                return capitalize(quantity(number)) + " " + container(number) + " of beer on the wall, " +
-                        quantity(number) + " " + container(number) + " of beer.\n" +
-                        action(number) +
-                        quantity(successor(number)) + " " + container(successor(number)) + " of beer on the wall.\n";
+    	BottleNumber bottleNumber = new BottleNumber(number);
+    	
+                return capitalize(bottleNumber.quantity()) + " " + bottleNumber.container() + " of beer on the wall, " +
+                		bottleNumber.quantity() + " " + bottleNumber.container() + " of beer.\n" +
+                		bottleNumber.action() +
+                		quantity(bottleNumber.successor()) + " " + container(bottleNumber.successor()) + " of beer on the wall.\n";
     }
     
     public String capitalize(String phrase) {

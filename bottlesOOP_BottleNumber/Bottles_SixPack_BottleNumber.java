@@ -21,39 +21,20 @@ public class Bottles_SixPack_BottleNumber {
 
     public String verse(int number) {
     	BottleNumber bottleNumber = new BottleNumber(number);
+    	BottleNumber nextBottleNumber = new BottleNumber(bottleNumber.successor());
     	
                 return capitalize(bottleNumber.quantity()) + " " + bottleNumber.container() + " of beer on the wall, " +
                 		bottleNumber.quantity() + " " + bottleNumber.container() + " of beer.\n" +
                 		bottleNumber.action() +
-                		quantity(bottleNumber.successor()) + " " + container(bottleNumber.successor()) + " of beer on the wall.\n";
+                		nextBottleNumber.quantity() + " " + nextBottleNumber.container() + " of beer on the wall.\n";
     }
     
     public String capitalize(String phrase) {
     	return phrase.substring(0,1).toUpperCase() + phrase.substring(1);
     }
-    
-    public int successor(int number) {
-    	return new BottleNumber(number).successor();
-
-    }
-    public String action(int number) {
-    	return new BottleNumber(number).action();
-
-    }
-
-    
-    public String container(int number) {
-    	return new BottleNumber(number).container();
-
-    }
-    
-    public String pronoun(int number) {
-    	return new BottleNumber(number).pronoun(); 
-
-    }
-    
-    public String quantity(int number) {
-    	return new BottleNumber(number).quantity();
-
-    }
 }
+/*
+ * This chapter continued the quest to make Bottles open to the six-pack requirement. It
+ *	recognized that many methods in Bottles obsessed on number, and undertook the Extract Class
+ *	refactoring to cure this obsession. The refactoring created a new class named BottleNumber.
+ */

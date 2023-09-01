@@ -47,6 +47,9 @@ public class BottleNumber {
     	case 1:
     		bottleNumberClass = new BottleNumber1(number);
     		break;
+    	case 6:
+    		bottleNumberClass = new BottleNumber6(number);
+    		break;
     	default:
     		bottleNumberClass = new BottleNumber(number);
     		break;

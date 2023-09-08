@@ -1,5 +1,8 @@
 package bottlesOOP_SixPack_AchievingOpenness;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * While BottleNumber methods originally held conditionals that checked to see if number was 0 or 1, 
  * we simplify by creating separate classes for the 'true' branch and adding a simple factory in Bottles for the logic. 
@@ -39,23 +42,15 @@ public class BottleNumber {
     
     // Simple factory responsible for choosing the proper bottleNumber class for given number
     public static BottleNumber For(int number){ 
-    	BottleNumber bottleNumberClass;
-    	switch (number) {
-    	case 0:
-    		bottleNumberClass = new BottleNumber0(number);
-    		break;
-    	case 1:
-    		bottleNumberClass = new BottleNumber1(number);
-    		break;
-    	case 6:
-    		bottleNumberClass = new BottleNumber6(number);
-    		break;
-    	default:
-    		bottleNumberClass = new BottleNumber(number);
-    		break;
-
-    	}
+    	Class<?> bottleNumberClass;
+    	Map<Integer, Class<?>> bottleNumberClassMap = new HashMap<>();
+    	bottleNumberClassMap.put(0, BottleNumber0.class);
+    	bottleNumberClassMap.put(1, BottleNumber1.class);
+    	bottleNumberClassMap.put(6, BottleNumber6.class);
     	
-    	return bottleNumberClass;
+    	bottleNumberClass = bottleNumberClassMap.getOrDefault(number, BottleNumber.class);
+    	
+    	return bottleNumberClass(number); // not quite perfect but close. Basically would want to check within the map then default if not found.
     }
+    
 }

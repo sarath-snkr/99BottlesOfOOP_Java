@@ -1,6 +1,5 @@
 package bottlesOOP_SixPack_AchievingOpenness;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,11 +11,9 @@ import java.util.Map;
  */
 public class BottleNumber {
 	protected int number;
-	protected ArrayList<BottleNumber> registry = new ArrayList<>();
 	
 	public BottleNumber(int number){
 		this.number = number;
-		this.register(this);
 	}
 	
     public BottleNumber successor() {
@@ -43,29 +40,17 @@ public class BottleNumber {
     	return quantity() + " " + container(); 
     }
     
-    public Boolean canHandle(int number) {
-    	return true;
-    }
-    
-    public ArrayList<BottleNumber> getRegistry(){
-    	return this.registry;
-    }
-    
     // Simple factory responsible for choosing the proper bottleNumber class for given number
-    public BottleNumber For(int number){ 
-    	ArrayList<BottleNumber> registry = getRegistry();
-    	for (int i = 1; i < registry.size(); i++) {
-    		BottleNumber bottleNumberClass = registry.get(i);
-    		if (bottleNumberClass.canHandle(number)){
-    			return bottleNumberClass;
-    		}
-    	}
-    	return new BottleNumber(number);
+    public static BottleNumber For(int number){ 
+    	Class<?> bottleNumberClass;
+    	Map<Integer, Class<?>> bottleNumberClassMap = new HashMap<>();
+    	bottleNumberClassMap.put(0, BottleNumber0.class);
+    	bottleNumberClassMap.put(1, BottleNumber1.class);
+    	bottleNumberClassMap.put(6, BottleNumber6.class);
     	
-    }
-    
-    public void register(BottleNumber candidate) {
-    	this.registry.add(candidate);
+    	bottleNumberClass = bottleNumberClassMap.getOrDefault(number, BottleNumber.class);
+    	
+    	return bottleNumberClass(number); // not quite perfect but close. Basically would want to check within the map then default if not found.
     }
     
 }
